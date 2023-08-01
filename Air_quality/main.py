@@ -7,6 +7,8 @@ from sensirion_i2c_scd import Scd4xI2cDevice
 import seeed_si114x
 import signal
 import seeed_dht
+import pigpio
+import SDL_Pi_HM3301 as PM_sensor
 
 # This is a sample Python script.
 
@@ -29,10 +31,13 @@ def print_hi(name):
         print("scd4x Serial Number: {}".format(scd4x.read_serial_number()))
 
         scd4x.start_periodic_measurement()
+        hm3301 = PM_sensor.Seeed_HM3301()
 
         for _ in range(60):
             time.sleep(5)
             co2, temperature, humidity = scd4x.read_measurement()
+            data = hm3301.read_data()
+            hm3301.parse_data(data)
             print("Co2: {}, Temperature: {}, Humidity: {}".format(co2, temperature, humidity))
             print('Visible %03d UV %.2f IR %03d' % (SI1145.ReadVisible, SI1145.ReadUV/100, SI1145.ReadIR))
             humi, temp = sensor.read()
