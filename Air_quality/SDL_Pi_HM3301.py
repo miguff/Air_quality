@@ -86,6 +86,16 @@ class Seeed_HM3301(object):
         print(" ")
         print(" ")
 
+    def data_values(self, data):
+        self.PM_1_0_conctrt_std = data[4] << 8 | data[5]
+        self.PM_2_5_conctrt_std = data[6] << 8 | data[7]
+        self.PM_10_conctrt_std = data[8] << 8 | data[9]
+
+        self.PM_1_0_conctrt_atmosph = data[10] << 8 | data[11]
+        self.PM_2_5_conctrt_atmosph = data[12] << 8 | data[13]
+        self.PM_10_conctrt_atmosph = data[14] << 8 | data[15]
+
+        return self.PM_1_0_conctrt_std, self.PM_2_5_conctrt_std, self.PM_10_conctrt_std
 
 '''
 with SMBusWrapper(1) as bus:
