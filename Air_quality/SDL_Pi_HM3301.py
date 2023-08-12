@@ -97,21 +97,21 @@ class Seeed_HM3301(object):
 
         return self.PM_1_0_conctrt_std, self.PM_2_5_conctrt_std, self.PM_10_conctrt_std
 
-'''
+
 with SMBusWrapper(1) as bus:
-    write=i2c_msg.write(0x40,[0x88])
+    write=i2c_msg.write(0x08,[0x12])
     bus.i2c_rdwr(write)    
 
     while(1):
-        read = i2c_msg.read(0x40,29)
+        read = i2c_msg.read(0x08,4)
         bus.i2c_rdwr(read)
         data = list(read)
-        print type(data)
-        print data
+        print(type(data))
+        print(data)
         time.sleep(1)
-'''
 
 
+"""
 def main():
     print("################### NOTICE!!!! ############################")
     print("####### Please set the I2c speed to 20khz              ####")
@@ -137,5 +137,5 @@ def main():
 if __name__ == '__main__':
     main()
 
-
+"""
 
