@@ -62,8 +62,8 @@ def main():
     #    print('Usage: {} pin_number'.format(sys.argv[0]))
     #    sys.exit(1)
 
-    sonar_1 = GroveUltrasonicRanger(5)
-    sonar_2 = GroveUltrasonicRanger(16)
+    sonar_1 = GroveUltrasonicRanger(5) #D5-ben van
+    sonar_2 = GroveUltrasonicRanger(16) #D16-ban van
 
     print('Detecting distance...')
     while True:

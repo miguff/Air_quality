@@ -98,7 +98,7 @@ class Seeed_HM3301(object):
         return self.PM_1_0_conctrt_std, self.PM_2_5_conctrt_std, self.PM_10_conctrt_std
 
 
-with SMBusWrapper(1) as bus:
+"""with SMBusWrapper(1) as bus:
     write=i2c_msg.write(0x08,[0x12])
     bus.i2c_rdwr(write)    
 
@@ -106,12 +106,12 @@ with SMBusWrapper(1) as bus:
         read = i2c_msg.read(0x08,4)
         bus.i2c_rdwr(read)
         data = list(read)
-        print(type(data))
-        print(data)
-        time.sleep(1)
+        #print(type(data))
+        #print(data)
+        time.sleep(1)"""
 
 
-"""
+
 def main():
     print("################### NOTICE!!!! ############################")
     print("####### Please set the I2c speed to 20khz              ####")
@@ -127,15 +127,16 @@ def main():
     time.sleep(.1)
     while 1:
         data = hm3301.read_data()
-        # print data
+        print(data)
         if (hm3301.check_crc(data) != True):
             print("CRC error!")
         hm3301.parse_data(data)
         time.sleep(3)
 
 
+
 if __name__ == '__main__':
     main()
 
-"""
+
 
